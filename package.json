@@ -1,0 +1,29 @@
+{
+  "name": "data_formation_ai",
+  "version": "1.0.0",
+  "description": "an ai tool to be used for giving structured formation to raw data",
+  "keywords": [
+    "ai",
+    "data",
+    "analytics",
+    "database"
+  ],
+  "homepage": "https://github.com/HBuminY/data_formation_ai#readme",
+  "bugs": {
+    "url": "https://github.com/HBuminY/data_formation_ai/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HBuminY/data_formation_ai.git"
+  },
+  "license": "ISC",
+  "author": "hby",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsx ./src/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.18"
+  }
+}

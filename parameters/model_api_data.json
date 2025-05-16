@@ -1,0 +1,7 @@
+{
+    "endpoint":"http://127.0.0.1:1234/v1/chat/completions",
+    "modelID":"gemma-3-4b-it-qat",
+    "temperature": 0,
+    "max_tokens" : 5000,
+    "dostream" : false
+}
