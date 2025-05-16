@@ -23,4 +23,3 @@ writeJson('./data/standartized_data.json', std_data)
 
 let data:formatted_data = await readJson('./data/standartized_data.json');
 console.log(find_all_unique_values(data, 'Kalınlık'));
-
