@@ -1,9 +1,12 @@
 import { PathLike } from 'fs';
-import * as fs from 'fs/promises'; 
+import * as fsp from 'fs/promises'; 
+import * as fs from 'fs'
+import { api_parameters } from '../types/ai_api_types';
 
-export async function readJson(directory: PathLike | fs.FileHandle){
+export async function readJson(directory: PathLike){
+    if(!fs.existsSync(directory)){return false}
     try {
-        const data = await fs.readFile(directory, 'utf-8');
+        const data = await fsp.readFile(directory, 'utf-8');
         const result = JSON.parse(data);
         return result;
     } catch (err) {
@@ -11,18 +14,18 @@ export async function readJson(directory: PathLike | fs.FileHandle){
     }
 }
 
-export async function writeJson(directory: PathLike | fs.FileHandle, data:any){
+export async function writeJson(directory: PathLike | fsp.FileHandle, data:any){
     let dataStr:string = JSON.stringify(data, null, "  "); 
     try {
-        await fs.writeFile(directory, dataStr)
+        await fsp.writeFile(directory, dataStr)
     } catch (err) {
         throw err;
     }
 }
 
-export async function readRawText(directory: PathLike | fs.FileHandle):Promise<string>{
+export async function readRawText(directory: PathLike | fsp.FileHandle):Promise<string>{
     try {
-        const data = await fs.readFile(directory, 'utf-8');
+        const data = await fsp.readFile(directory, 'utf-8');
         const result = data;
         return result;
     } catch (err) {
@@ -30,15 +33,15 @@ export async function readRawText(directory: PathLike | fs.FileHandle):Promise<s
     }
 }
 
-export async function writeRawText(directory: PathLike | fs.FileHandle, data:string){
+export async function writeRawText(directory: PathLike | fsp.FileHandle, data:string){
     try {
-        await fs.writeFile(directory, data)
+        await fsp.writeFile(directory, data)
     } catch (err) {
         throw err;
     }
 }
 
-export async function sendPrompt(promptText: string, endPData: { endpoint: any; modelID: any; temperature: any; max_tokens: any; dostream: any; }, sysPromt: string){
+export async function sendPrompt(promptText: string, endPData:api_parameters, sysPromt: string){
     if (!endPData) throw new Error("Missing endpoint data");
     
     let endpoint = endPData.endpoint;
